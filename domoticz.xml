@@ -24,11 +24,11 @@
       <item>raicupaire</item>
     </one-of>
     <one-of>
-      <item>                   
-				les saine                                                                                                                                                                                                                                                  <tag>out.action.command="configScenes";</tag>
+      <item>les saine                                          
+        <tag>out.action.command="configScenes";</tag>
       </item>
-      <item>                   
-				les pairifairique                                                                                                                                                                                                                                                  <tag>out.action.command="configDevices";</tag>
+      <item>les pairifairique                                           
+        <tag>out.action.command="configDevices";</tag>
       </item>
     </one-of>
     <item repeat="0-1">
@@ -41,34 +41,22 @@
     <tag>out.action=new Object(); </tag>
     <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/domoticz";</tag>
     <one-of>
-      <item>
-        allume                                                                                                                                                                                                                              
+      <item>allume
         <tag>out.action.action="On";</tag>
         <tag>out.action.command="actionLight";</tag>
       </item>
-      <item>
-        eitin                                                                                                                                                                                                                            
+      <item>eitin
         <tag>out.action.action="Off";</tag>
         <tag>out.action.command="actionLight";</tag>
       </item>
-      <item>   quel est l'état de                                                                                                                                                                            <tag>out.action.command="etatLight";</tag>
+      <item>  quel est l'état de
+        <tag>out.action.command="etatLight";</tag>
       </item>
     </one-of>
     <one-of>
-      <item>    lampe du couloir                              
+      <item>
+        lampe du couloir
         <tag>out.action.device="1";</tag>
-      </item>
-      <item>    tes enceintes                              
-        <tag>out.action.device="2";</tag>
-      </item>
-      <item>    alerte temperature freebox                              
-        <tag>out.action.device="14";</tag>
-      </item>
-      <item>    ampoule du salon                              
-        <tag>out.action.device="17";</tag>
-      </item>
-      <item>    Rappelle Pillule                              
-        <tag>out.action.device="21";</tag>
       </item>
     </one-of>
   </rule>
@@ -76,20 +64,14 @@
     <tag>out.action=new Object(); </tag>
     <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/domoticz";</tag>
     <one-of>
-      <item>  donne moi                                                                            <tag>out.action.command="actionSensorExt";</tag>
+      <item>donne moi
+        <tag>out.action.command="actionSensorExt";</tag>
       </item>
     </one-of>
     <one-of>
-      <item>    la tempeirature                                                      <tag>out.action.device="7";</tag>
-        <tag>out.action.action="temp";</tag>
-      </item>
-      <item>    l'humiditei                                                      <tag>out.action.device="7";</tag>
-        <tag>out.action.action="hum";</tag>
-      </item>
-      <item>    la pression                                                      <tag>out.action.device="7";</tag>
-        <tag>out.action.action="baro";</tag>
-      </item>
-      <item>    le vent                                                      <tag>out.action.device="8";</tag>
+      <item>
+        le vent
+        <tag>out.action.device="8";</tag>
         <tag>out.action.action="wind";</tag>
       </item>
     </one-of>
@@ -101,26 +83,13 @@
     <tag>out.action=new Object(); </tag>
     <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/domoticz";</tag>
     <one-of>
-      <item>      donne moi                                                                             <tag>out.action.command="actionSensor";</tag>
+      <item>donne moi
+        <tag>out.action.command="actionSensor";</tag>
       </item>
     </one-of>
     <one-of>
-      <item>    Freebox Server Temp CPU M                              
-        <tag>out.action.device="3";</tag>
-      </item>
-      <item>    Freebox Server Temp CPU B                              
-        <tag>out.action.device="4";</tag>
-      </item>
-      <item>    Freebox Server Temp SW                              
-        <tag>out.action.device="5";</tag>
-      </item>
-      <item>    Freebox Fan                              
-        <tag>out.action.device="6";</tag>
-      </item>
-      <item>    visibilité                              
-        <tag>out.action.device="11";</tag>
-      </item>
-      <item>    luminositei du salon                              
+      <item>
+        luminositei du salon
         <tag>out.action.device="15";</tag>
       </item>
     </one-of>
