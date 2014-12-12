@@ -1,0 +1,10 @@
+
+.plugin-gridster.domoticz .front {
+  background: #FFFFFF url('images/domoticz.png') center 25px;
+  background-size:   100px 100px;
+  background-repeat: no-repeat;
+}
+
+.plugin-gridster.domoticz .back {
+  background: #FFFFFF;
+}

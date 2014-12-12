@@ -1,0 +1,10 @@
+{
+  "modules" : { 
+    "domoticz"  : {
+      "description": "Pilote les appareils de votre Domoticz",
+      "version" : "1.0",
+	  "ip_lan": "[IP]",
+	  "port" : "[PORT]"
+    }
+  }
+}
