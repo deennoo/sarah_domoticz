@@ -94,4 +94,24 @@
       </item>
     </one-of>
   </rule>
+  <rule id="ruleSunrize" scope="public">
+    <tag>out.action=new Object(); </tag>
+    <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/domoticz";</tag>
+    <one-of>
+      <item>le soleil se                                                      
+        <tag>out.action.command="etatSunrise";</tag>
+      </item>
+    </one-of>
+    <one-of>
+      <item> couche                                                     
+        <tag>out.action.action="couche";</tag>
+      </item>
+      <item> leive                                                     
+        <tag>out.action.action="leve";</tag>
+      </item>
+    </one-of>
+    <one-of>
+      <item>quand</item>
+    </one-of>
+  </rule>
 </grammar>

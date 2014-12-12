@@ -198,5 +198,34 @@ module.exports = {
 			callback('error_404');
 		});
 	},
+	/*
+	* recupere le sunrise
+	* @param: obj
+	* @param: integer
+	* @param: obj
+	*/
+	getSunRise:function(url,callback){
+		url = url+'json.htm?type=command&param=getSunRiseSet';
+		this.call(url,function(results){
+			if(results.body){
+				var corp = JSON.parse(results.body);
+				callback(corp);
+			}else{
+				callback('error_404');
+			}
+		},function(error){
+			callback('error_404');
+		});
+	},
+	/*
+	* recupere le sunrise
+	* @param: obj
+	* @param: integer
+	* @param: obj
+	*/
+	formatHours:function(value){
+		value = value.split(':');
+		return value[0]+' heure '+value[1];
+	},
 
 };

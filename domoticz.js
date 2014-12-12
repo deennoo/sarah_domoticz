@@ -35,7 +35,20 @@ exports.init = function(SARAH) {
 			break;
 		}
 	});
-}
+
+	//récupération du sunrise
+	domoticzHelper.getSunRise(url,function(data){
+		switch(data){
+			case 'error_no_body':
+			case 'error_404':
+			console.log('domoticz - récupération des périphériques fail!');
+			break;
+			default:
+			SARAH.context.domoticz.sunrize=data
+			break;
+		}
+	});
+};
 
 exports.action = function(data, callback, config, SARAH){
 	var config = SARAH.ConfigManager.getConfig().modules.domoticz,
@@ -170,6 +183,29 @@ exports.action = function(data, callback, config, SARAH){
 			});
 		}else{
 			callback({"tts":"Il semble que la configuration soit invalide"});
+		}
+		break;
+		case "etatSunrise":
+		if(data.action){
+			domoticzHelper.getSunRise(url,function(result){
+				switch(result){
+					case 'error_no_body':
+					case 'error_404':
+					callback({"tts":"Je nai pas reussi a communiquer avec domoticz"});
+					break;
+					default:
+					switch(data.action){
+						case 'leve':
+						callback({"tts":"Aujourd'hui Le soleil se léve a "+domoticzHelper.formatHours(result.Sunrise)});
+						break;
+						case 'couche':
+						callback({"tts":"Aujourd'hui Le soleil se couchera a "+domoticzHelper.formatHours(result.Sunset)});
+						break;
+					}
+					SARAH.context.domoticz.sunrize=result
+					break;
+				}
+			});
 		}
 		break;
 	}
