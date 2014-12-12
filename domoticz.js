@@ -187,17 +187,8 @@ var call = function (url, success, error){
 */
 var saveJson = function(file,data,callback){
 	var fs = require('fs');
-	fs.unlink(file,function(errd){
-		if(!errd){
-			fs.writeFile(file, data, function(err) {
-				if(err) {
-					callback(false);
-				} else {
-					callback(true);
-				}
-			});
-		}
-	});
+	fs.writeFileSync(file, data);
+	callback(true);
 }
 
 /*
@@ -286,7 +277,6 @@ var putDevices = function(obj,callback){
 						//correction saute de ligne
 						newXml = newXml.replace(/\n\s\s\s\s\s\s\s\s\s/g,'');
 						newXml = newXml.replace('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n','');
-						console.log(newXml);
 						saveJson(fileXML,newXml,function(data){
 							callback(data);
 						});
