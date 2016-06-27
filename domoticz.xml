@@ -13,6 +13,9 @@
         <ruleref uri="#ruleSensorExt"/>
       </item>
       <item>
+        <ruleref uri="#ruleSensorPis"/> //devrait pouvoir ajouter un sensor dedié a la zone piscine
+      </item>
+      <item>
         <ruleref uri="#ruleSensor"/>
       </item>
     </one-of>
@@ -79,6 +82,26 @@
       <item>eixteirieur</item>
     </one-of>
   </rule>
+  <rule id="ruleSensorPis" scope="public">
+    <tag>out.action=new Object(); </tag>
+    <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/domoticz";</tag>
+    <one-of>
+      <item>donne moi
+        <tag>out.action.command="actionSensorPis";</tag> //en lien avec actionSensorPis de domoticz.js
+      </item>
+    </one-of>
+    <one-of>
+      <item>
+        le vent
+        <tag>out.action.device="314";</tag>
+        <tag>out.action.action="temp";</tag>
+      </item>
+    </one-of>
+    <one-of>
+      <item>piscine</item>
+    </one-of>
+  </rule>
+  
   <rule id="ruleSensor" scope="public">
     <tag>out.action=new Object(); </tag>
     <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/domoticz";</tag>
