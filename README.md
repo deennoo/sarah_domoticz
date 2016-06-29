@@ -8,6 +8,12 @@ sarah_domoticz est un plugin permettant le controle d'un serveur domoticz par no
 Pour plus d'info sur l'utilisation, reportez vous au fichier index.html
 
 
-le but de ce frok est de rajouter la possibilité de choisr a quelle zone appartienent les sondes afin que la réponses tts desarah soit adapter : 
-nous : sarah quel est la temperature de la pisicne 
-sarah : la temperature de la piscine est de xx degres
+Ce fork a pour but de differencier les réponses en fonction des temperatures demandé par zone
+
+3 Zones : 
+
+Interieur
+Exterieur
+Pisicne
+
+Pour le XML pour les exemples
