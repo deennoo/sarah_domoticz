@@ -191,10 +191,10 @@ exports.action = function(data, callback, config, SARAH){
 					domoticzHelper.setContextDeviceData(SARAH,data.device,result);
 					switch(data.action){
 						case 'temp':
-						callback({"tts":"La tempeirature est de "+result.Temp+" degrey."});
+						callback({"tts":"La tempeirature exterieur est de "+result.Temp+" degrey."});
 						break;
 						case 'hum':
-						callback({"tts":"L'humiditei est de "+result.Humidity+" pour cent."});
+						callback({"tts":"L'humiditei exterieur est de "+result.Humidity+" pour cent."});
 						break;
 						case 'baro':
 						value = result.Data.split(', ');
@@ -225,10 +225,10 @@ exports.action = function(data, callback, config, SARAH){
 					domoticzHelper.setContextDeviceData(SARAH,data.device,result);
 					switch(data.action){
 						case 'temp':
-						callback({"tts":"La tempeirature exterieur est de "+result.Temp+" degrey."});
+						callback({"tts":"La tempeirature interieur est de "+result.Temp+" degrey."});
 						break;
 						case 'hum':
-						callback({"tts":"L'humiditei exterieur est de "+result.Humidity+" pour cent."});
+						callback({"tts":"L'humiditei interieur est de "+result.Humidity+" pour cent."});
 						break;
 						
 					}
