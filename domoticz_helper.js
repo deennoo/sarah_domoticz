@@ -32,9 +32,10 @@ module.exports = {
 		model = null,
 		zoneLight = [],
 		zoneSensorExt = [],
+		zoneSensorInt = [],
+		zoneSensorPis = [],
 		zoneSensor = [],
 		newXml = null;
-
 		fileHelper.getFile(fileXML,function(success){
 			if(success!==false){
 				for(var index in obj){
@@ -61,6 +62,16 @@ module.exports = {
 							zoneSensor.push({ _: row.Name, tag: [ 'out.action.device="'+row.idx+'";' ] });
 						}
 						break;
+						case (row.Type.indexOf('Temp')>-1&&row.Type.indexOf('Humidity')===-1):
+						if(row.Name&&row.idx){
+							zoneSensorInt.push({ _: row.Name, tag: [ 'out.action.device="'+row.idx+'";' ] });
+						}
+						break;
+						case (row.Type.indexOf('Temp')>-1&&row.Type.indexOf('Humidity')===-1):
+						if(row.Name&&row.idx){
+							zoneSensorPis.push({ _: row.Name, tag: [ 'out.action.device="'+row.idx+'";' ] });
+						}
+						break;
 					}
 					parseString(success, function (err, result) {
 						if(!err){
@@ -81,21 +92,31 @@ module.exports = {
 										result.grammar.rule[index]['one-of'][1].item = zoneSensor;
 									}
 									break;
+									case (result.grammar.rule[index].$.id==='ruleSensorInt'):
+									if(zoneSensorInt.length>0){
+										result.grammar.rule[index]['one-of'][1].item = zoneSensorInt;
+									}
+									break;
+									case (result.grammar.rule[index].$.id==='ruleSensorPis'):
+									if(zoneSensorPis.length>0){
+										result.grammar.rule[index]['one-of'][1].item = zoneSensorPis;
+									}
+									break;
 								}
 							}
 							newXml = builder.buildObject(result);
 							newXml = newXml.replace(/\n\s\s\s\s\s\s\s\s\s/g,'');
 							newXml = newXml.replace('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n','');
-							callback(fileHelper.setFile(fileXML,newXml));
 						}else{
 							callback(false);
 						}
 					});
-}
-}else{
-	callback(false);
-}
-});
+				}
+				callback(fileHelper.setFile(fileXML,newXml));
+			}else{
+				callback(false);
+			}
+		});
 },
 	/*
 	* recupere les scenes
