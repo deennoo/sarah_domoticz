@@ -7,7 +7,7 @@ fileHelper = require('./file_helper.js'),
 domoticzHelper = require('./domoticz_helper.js');
 
 exports.init = function(SARAH) {
-	var config = SARAH.ConfigManager.getConfig().modules.domoticz,
+	var config = Config.modules.domoticz,
 	url = 'http://'+config.ip_lan+':'+config.port+'/';
 	SARAH.context.domoticz = {};
 	//récupération des scenes dans le context
@@ -51,7 +51,7 @@ exports.init = function(SARAH) {
 };
 
 exports.action = function(data, callback, config, SARAH){
-	var config = SARAH.ConfigManager.getConfig().modules.domoticz,
+	var config = Config.modules.domoticz,
 	url = 'http://'+config.ip_lan+':'+config.port+'/',
 	tts = "Je m'en occupe";
 
@@ -114,7 +114,52 @@ exports.action = function(data, callback, config, SARAH){
 			});
 		}
 		break;
+		case "etatBlind":
+		if(data.device){
+			domoticzHelper.getDevice(url,data.device,function(result){
+				domoticzHelper.setContextDeviceData(SARAH,data.device,result);
+				switch(result){
+					case 'error_no_body':
+					case 'error_404':
+					callback({"tts":"Je nai pas reussi a communiquer avec domoticz"});
+					break;
+					default:
+					switch(true){
+						case (result.Data.indexOf('On')>-1):
+						case (result.Data.indexOf('Open')>-1):
+						case (result.Data.indexOf('SetLevel')>-1):
+						callback({"tts":result.Name+' est ouvert.'});
+						break;
+						default:
+						callback({"tts":result.Name+' est fermé.'});
+						break;
+					}
+					break;
+				}
+			});
+		}
+		break;
 		case "actionLight":
+		var phrase_success = new Array();
+        phrase_success[1] = 'C\'est fait!';
+        phrase_success[2] = 'A vos ordres!';
+        phrase_success[3] = 'Commande effectuée!';
+        phrase_success[4] = 'Ok!';
+        phrase_success[5] = 'Bien meussieu'
+		if(data.action&&data.device){
+            devices = data.device.split(',');
+            actionLight(SARAH,url,devices,0,data.action,callback);
+		}else{
+			callback({"tts":"Il semble que la configuration soit invalide"});
+		}
+		break;
+				case "actionBlind":
+		var phrase_success = new Array();
+        phrase_success[1] = 'C\'est fait!';
+        phrase_success[2] = 'A vos ordres!';
+        phrase_success[3] = 'Commande effectuée!';
+        phrase_success[4] = 'Ok!';
+        phrase_success[5] = 'Bien meussieu'
 		if(data.action&&data.device){
 			domoticzHelper.setDevice(url,data.device,data.action,function(result){
 				switch(result){
@@ -124,6 +169,9 @@ exports.action = function(data, callback, config, SARAH){
 					break;
 					case true:
 					domoticzHelper.setContextDeviceData(SARAH,data.device,{Data:data.action});
+					random = Math.floor((Math.random()*(phrase_success.length-1))+1);
+                    phrase_select = phrase_success[random];
+                    callback({'tts': phrase_select});
 					break;
 				}
 			},0);
@@ -143,20 +191,69 @@ exports.action = function(data, callback, config, SARAH){
 					domoticzHelper.setContextDeviceData(SARAH,data.device,result);
 					switch(data.action){
 						case 'temp':
-						callback({"tts":"La tempeirature eixterieur est "+result.Temp+" degrei."});
+						callback({"tts":"La tempeirature est de "+result.Temp+" degrey."});
 						break;
 						case 'hum':
-						callback({"tts":"L'humiditei eixterieur est "+result.Humidity+" pourssant."});
+						callback({"tts":"L'humiditei est de "+result.Humidity+" pour cent."});
 						break;
 						case 'baro':
 						value = result.Data.split(', ');
 						value = value[2].replace('hPa','');
-						callback({"tts":"la preission eixterieur est "+value+" hectoPascal."});
+						callback({"tts":"la prayssion éxterrieur est de "+value+" hectoPascal."});
 						break;
 						case 'wind':
 						var value = result.Speed.replace('.',' virgule ');
-						callback({"tts":"Le vent  est "+value+" meitre par seconde."});
+						callback({"tts":"Le vent  est "+value+" maitre par seconde."});
 						break;
+					}
+					break;
+				}
+			});
+		}else{
+			callback({"tts":"Il semble que la configuration soit invalide"});
+		}
+		break;
+		case "actionSensorInt":
+		if(data.action&&data.device){
+			domoticzHelper.getDevice(url,data.device,function(result){
+				switch(result){
+					case 'error_no_body':
+					case 'error_404':
+					callback({"tts":"Je nai pas reussi a communiquer avec domoticz"});
+					break;
+					default:
+					domoticzHelper.setContextDeviceData(SARAH,data.device,result);
+					switch(data.action){
+						case 'temp':
+						callback({"tts":"La tempeirature exterieur est de "+result.Temp+" degrey."});
+						break;
+						case 'hum':
+						callback({"tts":"L'humiditei exterieur est de "+result.Humidity+" pour cent."});
+						break;
+						
+					}
+					break;
+				}
+			});
+		}else{
+			callback({"tts":"Il semble que la configuration soit invalide"});
+		}
+		break;
+		case "actionSensorPis":
+		if(data.action&&data.device){
+			domoticzHelper.getDevice(url,data.device,function(result){
+				switch(result){
+					case 'error_no_body':
+					case 'error_404':
+					callback({"tts":"Je nai pas reussi a communiquer avec domoticz"});
+					break;
+					default:
+					domoticzHelper.setContextDeviceData(SARAH,data.device,result);
+					switch(data.action){
+						case 'temp':
+						callback({"tts":"La tempeirature de la piscine est de "+result.Temp+" degrey."});
+						break;
+						
 					}
 					break;
 				}
@@ -210,3 +307,36 @@ exports.action = function(data, callback, config, SARAH){
 		break;
 	}
 };
+function actionLight(SARAH,url,devices,index,action,callback) {
+   domoticzHelper.setDevice(url,devices[index],action,function(result){
+      switch(result){
+         case 'error_no_body':
+         case 'error_404':
+            callback({"tts":"Je nai pas reussi a communiquer avec domoticz"});
+         break;
+         case true:
+            domoticzHelper.setContextDeviceData(SARAH,devices[index],{Data:action});
+            
+            if (index==devices.length-1) {
+                // on a fait tous les devices
+
+               var phrase_success = new Array();
+                    phrase_success[1] = 'C\'est fait!';
+                    phrase_success[2] = 'A vos ordres!';
+                    phrase_success[3] = 'Commande effectuée!';
+                    phrase_success[4] = 'Ok!';
+                    phrase_success[5] = 'Bien meussieu'
+
+               random = Math.floor((Math.random()*(phrase_success.length-1))+1);
+
+               
+                  phrase_select = phrase_success[random];
+                  callback({'tts': phrase_select});
+            } else {
+                // il reste encore des devices à allumer/éteindre
+               actionLight(SARAH,url,devices,index+1,action,callback);
+            }
+         break;
+      }
+   },0);
+}
