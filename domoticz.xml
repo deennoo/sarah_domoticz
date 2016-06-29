@@ -12,9 +12,13 @@
       <item>
         <ruleref uri="#ruleSensorExt"/>
       </item>
-      <item>
-        <ruleref uri="#ruleSensorPis"/> //devrait pouvoir ajouter un sensor dedié a la zone piscine
+	  <item>
+        <ruleref uri="#ruleSensorInt"/>
       </item>
+	  <item>
+        <ruleref uri="#ruleSensorPis"/>
+      </item>
+      
       <item>
         <ruleref uri="#ruleSensor"/>
       </item>
@@ -27,11 +31,11 @@
       <item>raicupaire</item>
     </one-of>
     <one-of>
-      <item>les saine                                          
-        <tag>out.action.command="configScenes";</tag>
+      <item>       les saine                                                      &#xD;
+        &#xD;      <tag>out.action.command="configScenes";</tag>
       </item>
-      <item>les pairifairique                                           
-        <tag>out.action.command="configDevices";</tag>
+      <item>       les pairifairique                                                       &#xD;
+        &#xD;      <tag>out.action.command="configDevices";</tag>
       </item>
     </one-of>
     <item repeat="0-1">
@@ -44,93 +48,518 @@
     <tag>out.action=new Object(); </tag>
     <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/domoticz";</tag>
     <one-of>
-      <item>allume
-        <tag>out.action.action="On";</tag>
+      <item>       allume                    &#xD;
+        &#xD;
+        &#xD;      <tag>out.action.action="On";</tag>
         <tag>out.action.command="actionLight";</tag>
       </item>
-      <item>eitin
-        <tag>out.action.action="Off";</tag>
+      <item>   bascule                    &#xD;
+        &#xD;
+        &#xD;      <tag>out.action.action="On";</tag>
         <tag>out.action.command="actionLight";</tag>
       </item>
-      <item>  quel est l'état de
-        <tag>out.action.command="etatLight";</tag>
+      <item>       éteins                    &#xD;
+        &#xD;
+        &#xD;      <tag>out.action.action="Off";</tag>
+        <tag>out.action.command="actionLight";</tag>
+      </item>
+      <item>       jeu                   &#xD;
+        &#xD;
+        &#xD;      <tag>out.action.action="Off";</tag>
+        <tag>out.action.command="actionLight";</tag>
+      </item>
+      <item>
+        quel est l'état de            &#xD;
+        &#xD;      <tag>out.action.command="etatLight";</tag>
       </item>
     </one-of>
     <one-of>
       <item>
-        lampe du couloir
-        <tag>out.action.device="1";</tag>
+        la vache
+        <tag>out.action.device="539";</tag>
       </item>
-    </one-of>
+	  
+	  <item>
+        Lumiere de la chambre d'Oscar
+        <tag>out.action.device="1362";</tag>
+      </item>
+	  
+	  <item>
+        l'anti moustique d'oscar
+        <tag>out.action.device="1626";</tag>
+      </item>
+
+      <item>
+        notre chambre
+        <tag>out.action.device="1363";</tag>
+      </item>
+	  
+	  <item>
+        la Tele de notre chambre
+        <tag>out.action.device="1194";</tag>
+      </item>
+	  
+	  <item>
+        l'anti moustique de notre chambre
+        <tag>out.action.device="100";</tag>
+      </item>
+	  
+	  <item>
+        Ma lampe
+        <tag>out.action.device="1403";</tag>
+      </item>
+	  
+	  <item>
+        la Console
+        <tag>out.action.device="778";</tag>
+      </item>
+	  
+	  <item>
+        les etoiles
+        <tag>out.action.device="105";</tag>
+      </item>
+	  
+	  <item>
+        Salon
+        <tag>out.action.device="1397";</tag>
+      </item>
+	  
+	  <item>
+        le Bar
+        <tag>out.action.device="1548";</tag>
+      </item>
+	  
+	   <item>
+        les Appliques
+        <tag>out.action.device="1401";</tag>
+      </item>
+	  
+	  <item>
+        le Meuble tele
+        <tag>out.action.device="1340";</tag>
+      </item>
+	  
+	   <item>
+        Eclairage de la tele
+        <tag>out.action.device="746";</tag>
+      </item>
+	  
+	  <item>
+        la Cuisine
+        <tag>out.action.device="1146";</tag>
+      </item>
+	  
+	  <item>
+        la terrasse
+        <tag>out.action.device="34";</tag>
+      </item>
+	  
+	  <item>
+        le store
+        <tag>out.action.device="310";</tag>
+      </item>
+	  
+	  <item>
+        le Store Automatique
+        <tag>out.action.device="1468";</tag>
+      </item>
+	  
+	  <item>
+        la vmc de l etage
+        <tag>out.action.device="1602";</tag>
+      </item>
+	  
+	  <item>
+        le chauffage de la salle de bains
+        <tag>out.action.device="248";</tag>
+      </item>
+	  
+	  <item>
+        le chauffage du studio
+        <tag>out.action.device="215";</tag>
+      </item>
+	  
+	  <item>
+        la tele du studio
+        <tag>out.action.device="213";</tag>
+      </item>
+	  
+	  <item>
+        le studio
+        <tag>out.action.device="214";</tag>
+      </item>
+	  
+	  <item>
+        la VMC du studio
+        <tag>out.action.device="1599";</tag>
+      </item>
+	  	  
+	  <item>
+        la piece a loisir
+        <tag>out.action.device="13";</tag>
+      </item>
+	  
+	  <item>
+        la platine
+        <tag>out.action.device="92";</tag>
+      </item>
+	  
+	  <item>
+        le bureau piece a loisir
+        <tag>out.action.device="90";</tag>
+      </item>
+	  
+	  <item>
+        la tele piece a loisir
+        <tag>out.action.device="488";</tag>
+      </item>
+	  
+	  <item>
+        le PC piece a loisir
+        <tag>out.action.device="91";</tag>
+      </item>
+	  
+	  <item>
+        le PC du bureau
+        <tag>out.action.device="94";</tag>
+      </item>
+	  
+	  <item>
+        le buffet du bureau
+        <tag>out.action.device="93";</tag>
+      </item>
+	  
+	  <item>
+        le bureau
+        <tag>out.action.device="1364";</tag>
+      </item>	  
+	  
+      <item>
+        le Portail
+        <tag>out.action.device="489";</tag>
+      </item>     
+      
+      <item>
+        Eclairage Exterieur
+        <tag>out.action.device="961,924";</tag>
+      </item>
+	  
+      <item>
+        le Filtre de la Piscine
+        <tag>out.action.device="1312";</tag>
+      </item>
+	  
+      <item>
+        la piscine
+        <tag>out.action.device="232";</tag>
+      </item>
+	  
+      <item>
+        Couloir du re de chaussée
+        <tag>out.action.device="1569";</tag>
+      </item>
+	  
+      
+    </one-of>	
   </rule>
   <rule id="ruleSensorExt" scope="public">
     <tag>out.action=new Object(); </tag>
     <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/domoticz";</tag>
     <one-of>
-      <item>donne moi
-        <tag>out.action.command="actionSensorExt";</tag>
+      <item>       quel est            &#xD;
+        &#xD;      <tag>out.action.command="actionSensorExt";</tag>
       </item>
     </one-of>
     <one-of>
       <item>
-        le vent
-        <tag>out.action.device="8";</tag>
-        <tag>out.action.action="wind";</tag>
+        la temperature exterieur
+        <tag>out.action.device="1322";</tag>
+        <tag>out.action.action="temp";</tag>
       </item>
-    </one-of>
-    <one-of>
-      <item>eixteirieur</item>
-    </one-of>
+	  <item>
+        la temperature sous abris
+        <tag>out.action.device="5";</tag>
+        <tag>out.action.action="temp";</tag>
+      </item>
+	  
+      <item>
+        l'humidite exterieur
+        <tag>out.action.device="1322";</tag>
+        <tag>out.action.action="hum";</tag>
+      </item>
+	 </one-of>
   </rule>
+  
   <rule id="ruleSensorPis" scope="public">
     <tag>out.action=new Object(); </tag>
     <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/domoticz";</tag>
     <one-of>
-      <item>donne moi
-        <tag>out.action.command="actionSensorPis";</tag> //en lien avec actionSensorPis de domoticz.js
+      <item>       quel est            &#xD;
+        &#xD;      <tag>out.action.command="actionSensorPis";</tag>
       </item>
     </one-of>
-    <one-of>
-      <item>
-        le vent
+	<one-of>
+	  <item>
+        la temperature de la piscine
         <tag>out.action.device="314";</tag>
         <tag>out.action.action="temp";</tag>
       </item>
-    </one-of>
-    <one-of>
-      <item>piscine</item>
-    </one-of>
+	 </one-of>
   </rule>
-  
+	  
+	  
+ <rule id="ruleSensorInt" scope="public">
+    <tag>out.action=new Object(); </tag>
+    <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/domoticz";</tag>
+    <one-of>
+      <item>       quel est            &#xD;
+        &#xD;      <tag>out.action.command="actionSensorInt";</tag>
+      </item>
+    </one-of>
+	<one-of>
+	  <item>
+        la temperature du salon
+        <tag>out.action.device="8";</tag>
+        <tag>out.action.action="temp";</tag>
+      </item>
+	 </one-of>
+  </rule>
+	   
   <rule id="ruleSensor" scope="public">
     <tag>out.action=new Object(); </tag>
     <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/domoticz";</tag>
     <one-of>
-      <item>donne moi
-        <tag>out.action.command="actionSensor";</tag>
+      <item>       donne moi            &#xD;
+        &#xD;      <tag>out.action.command="actionSensor";</tag>
       </item>
     </one-of>
     <one-of>
+      
       <item>
-        luminositei du salon
-        <tag>out.action.device="15";</tag>
+        Compteur GAZ
+        <tag>out.action.device="44";</tag>
       </item>
+      <item>
+        Compteur EAU
+        <tag>out.action.device="45";</tag>
+      </item>
+      <item>
+        RAM
+        <tag>out.action.device="111";</tag>
+      </item>
+      <item>
+        CPU
+        <tag>out.action.device="112";</tag>
+      </item>
+      <item>
+        Temp RPI
+        <tag>out.action.device="115";</tag>
+      </item>
+      <item>
+        Saison
+        <tag>out.action.device="117";</tag>
+      </item>
+      <item>
+        Fete
+        <tag>out.action.device="118";</tag>
+      </item>
+      <item>
+        Valeur Engrais
+        <tag>out.action.device="119";</tag>
+      </item>
+      <item>
+        Etat Engrais
+        <tag>out.action.device="120";</tag>
+      </item>
+      <item>
+        Instruction Engrais
+        <tag>out.action.device="121";</tag>
+      </item>
+      <item>
+        Valeur Humiditée
+        <tag>out.action.device="122";</tag>
+      </item>
+      <item>
+        Etat Humidité
+        <tag>out.action.device="123";</tag>
+      </item>
+      <item>
+        Instruction Humiditée
+        <tag>out.action.device="124";</tag>
+      </item>
+      <item>
+        Temperature Valeur
+        <tag>out.action.device="125";</tag>
+      </item>
+      <item>
+        Etat Temperature
+        <tag>out.action.device="126";</tag>
+      </item>
+      <item>
+        Instruction Temperature
+        <tag>out.action.device="127";</tag>
+      </item>
+      <item>
+        Valeur Luminositée
+        <tag>out.action.device="128";</tag>
+      </item>
+      <item>
+        Etat Luminosité
+        <tag>out.action.device="129";</tag>
+      </item>
+      <item>
+        Instruction Lumiere
+        <tag>out.action.device="130";</tag>
+      </item>
+      <item>
+        Freebox Switch
+        <tag>out.action.device="135";</tag>
+      </item>
+      <item>
+        Freebox CPUm
+        <tag>out.action.device="136";</tag>
+      </item>
+      <item>
+        Freebox CPUb
+        <tag>out.action.device="137";</tag>
+      </item>
+      <item>
+        Freebox FW
+        <tag>out.action.device="138";</tag>
+      </item>
+      <item>
+        Freebox Uptime
+        <tag>out.action.device="139";</tag>
+      </item>
+      <item>
+        Freebox Upload Max
+        <tag>out.action.device="140";</tag>
+      </item>
+      <item>
+        Freebox Download Max
+        <tag>out.action.device="141";</tag>
+      </item>
+      <item>
+        Freebox Espace Libre HDD Interne
+        <tag>out.action.device="142";</tag>
+      </item>
+      <item>
+        etat du VPN de la freebox
+        <tag>out.action.device="144";</tag>
+      </item>
+      <item>
+        Crues
+        <tag>out.action.device="199";</tag>
+      </item>
+      <item>
+        Vigilance Meteo
+        <tag>out.action.device="200";</tag>
+      </item>
+      <item>
+        Pluie dans 1 Heure
+        <tag>out.action.device="201";</tag>
+      </item>
+      <item>
+        HDD freebox
+        <tag>out.action.device="202";</tag>
+      </item>
+      <item>
+        Pluie Demain
+        <tag>out.action.device="205";</tag>
+      </item>
+      <item>
+        Visibilitée
+        <tag>out.action.device="210";</tag>
+      </item>
+      <item>
+        Radiation Solaire
+        <tag>out.action.device="226";</tag>
+      </item>
+      <item>
+        Piscine
+        <tag>out.action.device="314";</tag>
+      </item>
+      <item>
+        Plein de la Smart
+        <tag>out.action.device="376";</tag>
+      </item>
+      <item>
+        Km restant
+        <tag>out.action.device="377";</tag>
+      </item>
+      <item>
+        Azimute Soleil
+        <tag>out.action.device="959";</tag>
+      </item>
+      <item>
+        Élévation soleil
+        <tag>out.action.device="960";</tag>
+      </item>
+      <item>
+        Conso Lave Linge
+        <tag>out.action.device="1203";</tag>
+      </item>
+      <item>
+        Conso PC
+        <tag>out.action.device="1206";</tag>
+      </item>
+      <item>
+        Conso Seche Linge
+        <tag>out.action.device="1212";</tag>
+      </item>
+      <item>
+        Alerte Moustique
+        <tag>out.action.device="1220";</tag>
+      </item>
+      <item>
+        Alerte Moustique Tigre
+        <tag>out.action.device="1221";</tag>
+      </item>
+      <item>
+        Alerte Pollens
+        <tag>out.action.device="1222";</tag>
+      </item>
+      <item>
+        Marée
+        <tag>out.action.device="1368";</tag>
+      </item>
+      <item>
+        analog hum
+        <tag>out.action.device="1571";</tag>
+      </item>
+      <item>
+        Conseil Meteo
+        <tag>out.action.device="1603";</tag>
+      </item>
+      <item>
+        Commentaire Meteo
+        <tag>out.action.device="1604";</tag>
+      </item>
+	  <item>
+        Horoscope
+        <tag>out.action.device="1627";</tag>
+      </item>
+	  
     </one-of>
   </rule>
   <rule id="ruleSunrize" scope="public">
     <tag>out.action=new Object(); </tag>
     <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/domoticz";</tag>
     <one-of>
-      <item>le soleil se                                                      
-        <tag>out.action.command="etatSunrise";</tag>
+      <item>       le soleil se                                                                  &#xD;
+        &#xD;      <tag>out.action.command="etatSunrise";</tag>
       </item>
     </one-of>
     <one-of>
-      <item> couche                                                     
-        <tag>out.action.action="couche";</tag>
+      <item>
+        &#xD;
+        couche                                                                 &#xD;
+        &#xD;      <tag>out.action.action="couche";</tag>
       </item>
-      <item> leive                                                     
-        <tag>out.action.action="leve";</tag>
+      <item>
+        &#xD;
+        leive                                                                 &#xD;
+        &#xD;      <tag>out.action.action="leve";</tag>
       </item>
     </one-of>
     <one-of>
